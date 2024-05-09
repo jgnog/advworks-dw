@@ -1,0 +1,59 @@
+version: 2
+
+sources:
+  - name: humanresources
+    schema: humanresources
+    tables:
+     - name: employee
+models:
+  - name: stg_employee
+    columns:
+      - name: employee_id
+        description: "A unique identifier for the employee"
+        tests:
+          - unique
+          - not_null
+      - name: national_id_number
+        description: "ID registration"
+        tests:
+          - not_null  
+      - name: log_in_id
+        description: "keys"
+        tests:
+          - not_null
+      - name: job_title
+        description: "Employee tittle"
+        tests:
+          - not_null
+      - name: birth_date
+        description: "Aniversary"
+        tests:
+          - not_null
+      - name: marital_status
+        description: "Married or not"
+        tests:
+          - not_null
+      - name: gender
+        description: "M or F"
+        tests:
+          - not_null
+      - name: hire_date        
+        description: "Start the date as employee"
+        tests:
+          - not_null
+      - name: salaried_flag
+        description: "Amount"
+        tests:
+          - not_null
+      - name: vacation_hours
+        description: "Time off"
+        tests:
+          - not_null
+      - name: sick_leave_hours    
+        description: "Time off with sick"
+        tests:
+          - not_null
+      - name: modified_date
+        description: "Last updated"
+        tests:
+          - not_null          
