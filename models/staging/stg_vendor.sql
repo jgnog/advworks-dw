@@ -1,4 +1,3 @@
--- dim_vendor	 
 WITH numbered_contacts AS (
     SELECT v.businessentityid AS vendor_id,
            v.accountnumber as account_number,
@@ -25,14 +24,14 @@ WITH numbered_contacts AS (
 	       vw_adresses.postalcode as postal_code,
 	       vw_adresses.countryregionname as country_region_name,
            v.modifieddate as modified_date
-    FROM purchasing.vendor v
-    JOIN person.businessentitycontact bec ON bec.businessentityid = v.businessentityid
-    JOIN person.contacttype ct ON ct.contacttypeid = bec.contacttypeid
-    JOIN person.person p ON p.businessentityid = bec.personid
-    LEFT JOIN person.emailaddress ea ON ea.businessentityid = p.businessentityid
-    LEFT JOIN person.personphone pp ON pp.businessentityid = p.businessentityid
-    LEFT JOIN person.phonenumbertype pnt ON pnt.phonenumbertypeid = pp.phonenumbertypeid
-	LEFT JOIN purchasing.vvendorwithaddresses vw_adresses ON vw_adresses.businessentityid = v.businessentityid
+    FROM {{ source("purchasing", "vendor") }} v
+    JOIN {{ source("person", "businessentitycontact") }} bec ON bec.businessentityid = v.businessentityid
+    JOIN {{ source("person", "contacttype") }} ct ON ct.contacttypeid = bec.contacttypeid
+    JOIN {{ source("person", "person") }} p ON p.businessentityid = bec.personid
+    LEFT JOIN {{ source("person", "emailaddress") }} ea ON ea.businessentityid = p.businessentityid
+    LEFT JOIN {{ source("person", "personphone") }} pp ON pp.businessentityid = p.businessentityid
+    LEFT JOIN {{ source("person", "phonenumbertype") }} pnt ON pnt.phonenumbertypeid = pp.phonenumbertypeid
+	LEFT JOIN {{ source("purchasing", "vvendorwithaddresses") }} vw_adresses ON vw_adresses.businessentityid = v.businessentityid
 )
 SELECT *
 FROM numbered_contacts
