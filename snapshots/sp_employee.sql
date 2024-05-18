@@ -4,8 +4,8 @@
     config(
         target_schema='snapshots',
         unique_key='employee_id',
-        strategy='timestamp',
-        updated_at='last_update'
+        strategy='check',
+        check_cols=['job_title', 'marital_status', 'vacation_hours', 'sick_leave_hours', 'salaried_flag']
     )
 }}
 
