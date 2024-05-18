@@ -11,18 +11,18 @@ sources:
 models:
   - name: stg_shipment
     columns:
-      - name: ship_method_id
+      - name: shipmethodid
         description: The unique identifier for the shipment method.
         tests:      
           - unique
           - not_null
-      - name: ship_name
+      - name: transportername
         description: The name of the shipment method.
-      - name: ship_base
+      - name: priceship
         description: The base cost of the shipment.
-      - name: ship_rate
-        description: The rate of the shipment.
-      - name: modified_date
+      - name: identifyierunique
+        description: number uniquely identifying the record.
+      - name: datemodify
         description: The date when the shipment method record was last modified.
 
   
