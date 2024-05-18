@@ -17,7 +17,7 @@ models:
           - unique
           - not_null
       - name: transportername
-        description: The name of the shipment method.
+        description: The name of the shipment, method.
       - name: priceship
         description: The base cost of the shipment.
       - name: identifyierunique
