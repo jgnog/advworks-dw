@@ -6,7 +6,6 @@
         unique_key='ShipMethodID',
         strategy='timestamp',
         updated_at= 'DateModify'
-        
     )
 }}
 
