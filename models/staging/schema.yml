@@ -1,0 +1,157 @@
+Aversion: 2
+
+sources:
+  - name: humanresources
+    schema: humanresources
+    tables:
+     - name: employee
+
+  - name: purchasing
+    schema: purchasing
+    tables:
+     - name: shipmethod
+     - name: vendor
+     - name: vvendorwithaddresses
+     - name: purchaseorderheader
+
+  - name: person
+    schema: person
+    tables:
+     - name: person
+     - name: businessentitycontact
+     - name: contacttype
+     - name: emailaddress
+     - name: personphone
+     - name: phonenumbertype
+
+
+models:
+  - name: stg_employee
+    columns:
+      - name: employee_id
+        description: "A unique identifier for the employee"
+        tests:
+          - unique
+          - not_null
+      - name: national_id_number
+        description: "ID registration"
+        tests:
+          - not_null  
+      - name: log_in_id
+        description: "keys"
+        tests:
+          - not_null
+      - name: job_title
+        description: "Employee tittle"
+        tests:
+          - not_null
+      - name: birth_date
+        description: "Aniversary"
+        tests:
+          - not_null
+      - name: marital_status
+        description: "Married or not"
+        tests:
+          - not_null
+      - name: gender
+        description: "M or F"
+        tests:
+          - not_null
+      - name: hire_date        
+        description: "Start the date as employee"
+        tests:
+          - not_null
+      - name: salaried_flag
+        description: "Amount"
+        tests:
+          - not_null
+      - name: vacation_hours
+        description: "Time off"
+        tests:
+          - not_null
+      - name: sick_leave_hours    
+        description: "Time off with sick"
+        tests:
+          - not_null
+      - name: modified_date
+        description: "Last updated"
+        tests:
+          - not_null
+
+  - name: stg_shipment
+    columns:
+      - name: ship_method_id
+        description: The unique identifier for the shipment method.
+        tests:      
+          - unique
+          - not_null
+      - name: ship_name
+        description: The name of the shipment method.
+      - name: ship_base
+        description: The base cost of the shipment.
+      - name: ship_rate
+        description: The rate of the shipment.
+      - name: modified_date
+        description: The date when the shipment method record was last modified.
+
+  - name: stg_vendor
+    columns: 
+      - name: vendor_id
+        description: The unique identifier for the vendor.
+        tests:
+          - unique
+          - not_null
+      - name: account_number
+        description: The account number of the vendor.
+      - name: vendor_name
+        description: The name of the vendor.
+      - name: credit_rating
+        description: The credit rating of the vendor.
+      - name: preferred_vendor_status
+        description: A flag indicating if the vendor is a preferred vendor.
+      - name: active_flag
+        description: A flag indicating if the vendor is active.
+      - name: purchasing_web_service_url
+        description: The URL of the purchasing web service for the vendor.
+      - name: contact_type
+        description: The type of contact for the vendor.
+      - name: title
+        description: The title of the contact person.
+      - name: first_name
+        description: The first name of the contact person.
+      - name: middle_name
+        description: The middle name of the contact person.
+      - name: last_name
+        description: The last name of the contact person.
+      - name: suffix
+        description: The suffix of the contact person.
+      - name: phone_number
+        description: The phone number of the contact person.
+      - name: phone_number_type
+        description: The type of phone number for the contact person.
+      - name: email_address
+        description: The email address of the contact person.
+      - name: address_type
+        description: The type of address for the vendor.
+      - name: address_line1
+        description: The first line of the address for the vendor.
+      - name: address_line2
+        description: The second line of the address for the vendor.
+      - name: city
+        description: The city of the address for the vendor.
+      - name: state_province_name
+        description: The state or province name of the address for the vendor.
+      - name: postal_code
+        description: The postal code of the address for the vendor.
+      - name: country_region_name
+        description: The country or region name of the address for the vendor.
+      - name: modified_date
+        description: The date when the vendor record was last modified.
+
+  - name: stg_purchasing
+    columns: 
+      - name: purchasing_id
+        description: The unique identifier for the vendor.
+        tests:
+          - unique
+          - not_null        
